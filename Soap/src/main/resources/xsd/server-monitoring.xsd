@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/servermonitoring"
+           xmlns:tns="http://example.com/servermonitoring"
+           elementFormDefault="qualified">
+
+    <!-- Types -->
+    <xs:complexType name="ServerDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="status" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- createServer -->
+    <xs:element name="CreateServerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateServerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="server" type="tns:ServerDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- listServers -->
+    <xs:element name="ListServersRequest">
+        <xs:complexType/>
+    </xs:element>
+
+
+    <xs:element name="ListServersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="servers" type="tns:ServerDto" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- renameServer -->
+    <xs:element name="RenameServerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="newName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="RenameServerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="server" type="tns:ServerDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- getStatus -->
+    <xs:element name="GetStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetStatusResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- startServer -->
+    <xs:element name="StartServerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="StartServerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="server" type="tns:ServerDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- stopServer -->
+    <xs:element name="StopServerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="StopServerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="server" type="tns:ServerDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- deleteServer -->
+    <xs:element name="DeleteServerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteServerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
