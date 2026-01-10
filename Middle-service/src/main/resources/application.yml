@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: Middle-service
+
+server:
+  port: 8081
+
+soap:
+  endpoint: "http://localhost:8080/ws"
+  namespace: "http://example.com/servermonitoring"
